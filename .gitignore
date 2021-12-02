@@ -80,7 +80,6 @@ buildNumber.properties
 
 ### Custom ###
 .idea/externalDependencies.xml
-!ins-app/src/test/resources/test-data/ingredient/xml/samples.zip
 /doc/.gradle/
 /doc/build/
 /doc/.asciidoctor
