@@ -1,4 +1,4 @@
-# Relate links
+# Related links
 
 * https://github.com/thymeleaf/thymeleaf-spring/issues/263
 * https://github.com/spring-projects/spring-boot/issues/28893
