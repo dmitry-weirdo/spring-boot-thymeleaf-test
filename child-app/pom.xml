@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.github.dmitry-weirdo</groupId>
+        <artifactId>spring-boot-thymeleaf-test</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>child-app</artifactId>
+    <name>Test Spring Boot Thymeleaf Service Child App</name>
+
+<!--
+    <properties>
+        <thymeleaf.version>3.0.13.RELEASE</thymeleaf.version> &lt;!&ndash; see https://github.com/thymeleaf/thymeleaf-spring/issues/263#issuecomment-984568545 &ndash;&gt;
+    </properties>
+-->
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.neovisionaries</groupId>
+            <artifactId>nv-i18n</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.tngtech.archunit</groupId>
+            <artifactId>archunit-junit5</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.huxhorn.sulky</groupId>
+            <artifactId>de.huxhorn.sulky.ulid</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
+<!--
+        <dependency>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-spring-boot-starter</artifactId>
+        </dependency>
+-->
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-envers</artifactId>
+        </dependency>
+
+        <!--
+            Hibernate Envers still requires the old JAXB.
+            See https://stackoverflow.com/a/51916222/8534088
+        -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+        </dependency>
+<!--
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+        </dependency>
+-->
+        <dependency>
+            <!-- a Maven cheat that allows to use 2 versions of same dependency, see https://stackoverflow.com/a/53280462/8534088 -->
+            <groupId>org.glassfish.jaxb.</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <!--
+                Newer versions will not work, they fail with
+                java.lang.ClassNotFoundException: com.sun.xml.internal.bind.v2.ContextFactory
+            -->
+            <version>${jaxb-runtime-old.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.owasp.esapi</groupId>
+            <artifactId>esapi</artifactId>
+        </dependency>
+
+        <!--
+            With Keycloak 13.0 (namely the org.keycloak:spring-boot-container-bundle:13.0.0),
+            https://issues.redhat.com/browse/KEYCLOAK-13633 is resolved
+            and we can switch back to Tomcat and not fail under JDK 15.
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.awspring.cloud</groupId>
+            <artifactId>spring-cloud-aws-messaging</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.restdocs</groupId>
+            <artifactId>spring-restdocs-mockmvc</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-sts</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+
+        <plugins>
+
+<!--
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.springframework.boot</groupId>
+                            <artifactId>spring-boot-configuration-processor</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                            <goal>build-info</goal>
+                        </goals>
+                        <configuration>
+                            <additionalProperties>
+                                <name>Test Spring Boot Thymeleaf Service</name>
+                            </additionalProperties>
+                            <layers>
+                                <enabled>true</enabled>
+                                <configuration>${project.basedir}/src/layers.xml</configuration>
+                            </layers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+-->
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${mapstruct.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok-mapstruct-binding</artifactId>
+                            <version>${lombok-mapstruct-binding.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.springframework.boot</groupId>
+                            <artifactId>spring-boot-configuration-processor</artifactId>
+                            <version>${spring-boot.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.hibernate</groupId>
+                            <artifactId>hibernate-jpamodelgen</artifactId>
+                            <version>${hibernate.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+
+
+        </plugins>
+    </build>
+</project>

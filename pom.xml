@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.dmitry-weirdo</groupId>
+    <artifactId>spring-boot-thymeleaf-test</artifactId>
+    <version>1.0</version>
+
+    <packaging>pom</packaging>
+    <name>Test Spring Boot Thymeleaf Service</name>
+
+    <modules>
+        <module>child-app</module>
+    </modules>
+
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+
+        <archunit.version>0.22.0</archunit.version>
+        <assertj-core.version>3.21.0</assertj-core.version>
+        <autosize.version>4.0.2</autosize.version>
+        <aws.java.sdk.version>1.12.123</aws.java.sdk.version>
+        <commons-codec.version>1.15</commons-codec.version>
+        <commons-lang3.version>3.12.0</commons-lang3.version>
+        <commons-math3.version>3.6.1</commons-math3.version>
+        <commons-text.version>1.9</commons-text.version>
+        <copy-rename-maven-plugin.version>1.0.1</copy-rename-maven-plugin.version>
+        <replacer.version>1.5.3</replacer.version>
+        <de.huxhorn.sulky.ulid.version>8.2.0</de.huxhorn.sulky.ulid.version>
+        <decimal.js.version>10.3.1</decimal.js.version>
+        <shepherd.js.version>8.2.3</shepherd.js.version>
+        <fakegen.version>0.2</fakegen.version>
+        <frontend-maven-plugin.version>1.12.0</frontend-maven-plugin.version>
+        <hibernate.version>5.6.1.Final</hibernate.version>
+        <jackson-databind-nullable.version>0.1.0</jackson-databind-nullable.version>
+        <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
+        <jaxb-runtime.version>3.0.2</jaxb-runtime.version>
+        <jakarta.xml.bind-api.version>3.0.1</jakarta.xml.bind-api.version>
+
+        <!-- Old JAXB, required for Hibernate Envers-->
+        <jaxb-api.version>2.3.1</jaxb-api.version>
+        <javax.activation.version>1.1.1</javax.activation.version>
+        <!--
+            Newer versions like 3.0.1 will not work, they fail with
+            java.lang.ClassNotFoundException: com.sun.xml.internal.bind.v2.ContextFactory
+        -->
+        <jaxb-runtime-old.version>2.3.4</jaxb-runtime-old.version>
+        <jakarta.activation.version>2.0.1</jakarta.activation.version>
+        <javers.version>6.5.2</javers.version>
+        <jquery.version>3.6.0</jquery.version>
+        <jsr305.version>3.0.2</jsr305.version>
+        <junit-jupiter.version>5.8.2</junit-jupiter.version>
+        <keycloak.version>15.0.2</keycloak.version>
+        <jquery-throttle-debounce-plugin.version>1.1</jquery-throttle-debounce-plugin.version>
+        <liquibase.version>4.6.1</liquibase.version>
+        <log4j.version>2.14.1</log4j.version>
+        <lombok.version>1.18.22</lombok.version>
+        <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
+        <mapstruct.version>1.4.2.Final</mapstruct.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <mockito-junit-jupiter.version>3.6.28</mockito-junit-jupiter.version>
+        <mockito.version>4.1.0</mockito.version>
+        <node.version>v14.17.5</node.version>
+        <nv-i18n.version>1.29</nv-i18n.version>
+        <openapi-generator-maven-plugin.version>5.3.0</openapi-generator-maven-plugin.version>
+        <select2.version>4.0.13</select2.version>
+        <sonar-maven-plugin.version>3.9.1.2184</sonar-maven-plugin.version>
+        <sortpom-maven-plugin.version>3.0.0</sortpom-maven-plugin.version>
+        <spring-boot.version>2.6.1</spring-boot.version>
+        <spring.cloud-version>2020.0.4</spring.cloud-version>
+        <spring-cloud-aws-version>2.3.2</spring-cloud-aws-version>
+        <spring-data-envers.version>2.6.0</spring-data-envers.version>
+        <springfox.version>3.0.0</springfox.version>
+        <swagger-annotations.version>1.6.3</swagger-annotations.version>
+        <testcontainer.version>1.16.2</testcontainer.version>
+        <thymeleaf.version>3.0.13.RELEASE</thymeleaf.version> <!-- see https://github.com/thymeleaf/thymeleaf-spring/issues/263#issuecomment-984568545 -->
+        <vladmihalcea.version>2.14.0</vladmihalcea.version>
+        <webjars-locator.version>0.42</webjars-locator.version>
+        <wiremock.version>2.32.0</wiremock.version>
+        <esapi.version>2.2.3.1</esapi.version>
+        <jsoup.version>1.14.3</jsoup.version>
+        <dependency-check-maven.version>6.5.0</dependency-check-maven.version>
+        <spotbugs-maven-plugin.version>4.5.0.0</spotbugs-maven-plugin.version>
+        <findsecbugs-maven-plugin.version>1.11.0</findsecbugs-maven-plugin.version>
+
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-bom</artifactId>
+                <version>${log4j.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Override Thymeleaf version provided by Spring Boot -->
+            <!-- see https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/htmlsingle/#using.import -->
+            <dependency>
+                <groupId>org.thymeleaf</groupId>
+                <artifactId>thymeleaf-spring5</artifactId>
+                <version>${thymeleaf.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.thymeleaf</groupId>
+                <artifactId>thymeleaf</artifactId>
+                <version>${thymeleaf.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+                <!--
+                                <scope>compile</scope>
+                                <exclusions>
+                                    <exclusion>
+                                        <groupId>ognl</groupId>
+                                        <artifactId>ognl</artifactId>
+                                    </exclusion>
+                                </exclusions>
+                -->
+            </dependency>
+
+<!--
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+-->
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud-version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- see https://spring.io/blog/2021/03/17/spring-cloud-aws-2-3-is-now-available -->
+            <!-- todo: think whether this dependency is required, or just spring-cloud-aws-messaging is enough -->
+            <dependency>
+                <groupId>io.awspring.cloud</groupId>
+                <artifactId>spring-cloud-aws-dependencies</artifactId>
+                <version>${spring-cloud-aws-version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>io.awspring.cloud</groupId>
+                <artifactId>spring-cloud-aws-messaging</artifactId>
+                <version>${spring-cloud-aws-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-envers</artifactId>
+                <version>${spring-data-envers.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.amazonaws</groupId>
+                <artifactId>aws-java-sdk-bom</artifactId>
+                <version>${aws.java.sdk.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.code.findbugs</groupId>
+                <artifactId>jsr305</artifactId>
+                <version>${jsr305.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.neovisionaries</groupId>
+                <artifactId>nv-i18n</artifactId>
+                <version>${nv-i18n.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.tngtech.archunit</groupId>
+                <artifactId>archunit-junit5</artifactId>
+                <version>${archunit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons-codec.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.huxhorn.sulky</groupId>
+                <artifactId>de.huxhorn.sulky.ulid</artifactId>
+                <version>${de.huxhorn.sulky.ulid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-core</artifactId>
+                <version>${springfox.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger-annotations.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>jakarta.xml.bind</groupId>
+                <artifactId>jakarta.xml.bind-api</artifactId>
+                <version>${jakarta.xml.bind-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-math3</artifactId>
+                <version>${commons-math3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-text</artifactId>
+                <version>${commons-text.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>${assertj-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jaxb</groupId>
+                <artifactId>jaxb-runtime</artifactId>
+                <version>${jaxb-runtime.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>jakarta.activation</groupId>
+                <artifactId>jakarta.activation-api</artifactId>
+                <version>${jakarta.activation.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter</artifactId>
+                <version>${junit-jupiter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${mockito.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>${spring-boot.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.owasp.esapi</groupId>
+                <artifactId>esapi</artifactId>
+                <version>${esapi.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>log4j</groupId>
+                        <artifactId>log4j</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>org.owasp</groupId>
+                <artifactId>dependency-check-maven</artifactId>
+                <version>${dependency-check-maven.version}</version>
+                <configuration>
+                    <failBuildOnCVSS>8</failBuildOnCVSS>
+                    <formats>
+                        <format>junit</format>
+                    </formats>
+                    <prettyPrint>true</prettyPrint>
+                    <nodeAuditSkipDevDependencies>true</nodeAuditSkipDevDependencies>
+                    <nodePackageSkipDevDependencies>true</nodePackageSkipDevDependencies>
+                    <assemblyAnalyzerEnabled>false</assemblyAnalyzerEnabled>
+                    <yarnAuditAnalyzerEnabled>false</yarnAuditAnalyzerEnabled>
+                </configuration>
+            </plugin>
+<!--
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>${spotbugs-maven-plugin.version}</version>
+                <configuration>
+                    <effort>Max</effort>
+                    <threshold>High</threshold>
+                    <failOnError>true</failOnError>
+                    <includeFilterFile>${session.executionRootDirectory}/.mvn/spotbugs-security-include.xml
+                    </includeFilterFile>
+                    <excludeFilterFile>${session.executionRootDirectory}/.mvn/spotbugs-security-exclude.xml
+                    </excludeFilterFile>
+                    <plugins>
+                        <plugin>
+                            <groupId>com.h3xstream.findsecbugs</groupId>
+                            <artifactId>findsecbugs-plugin</artifactId>
+                            <version>${findsecbugs-maven-plugin.version}</version>
+                        </plugin>
+                    </plugins>
+                </configuration>
+            </plugin>
+-->
+        </plugins>
+    </build>
+
+</project>
