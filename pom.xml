@@ -107,18 +107,19 @@
                 <groupId>org.thymeleaf</groupId>
                 <artifactId>thymeleaf-spring5</artifactId>
                 <version>${thymeleaf.version}</version>
+<!--
                 <type>pom</type>
                 <scope>import</scope>
+-->
             </dependency>
 
-    <!--
             <dependency>
                 <groupId>org.thymeleaf</groupId>
                 <artifactId>thymeleaf</artifactId>
                 <version>${thymeleaf.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-                &lt;!&ndash;
+<!--                <type>pom</type>-->
+<!--                <scope>import</scope>-->
+                <!--
                                 <scope>compile</scope>
                                 <exclusions>
                                     <exclusion>
@@ -126,8 +127,8 @@
                                         <artifactId>ognl</artifactId>
                                     </exclusion>
                                 </exclusions>
-                &ndash;&gt;
-            </dependency>-->
+                -->
+            </dependency>
 
 
             <!-- I removed spring-boot-starter-parent dependency, still no success -->
