@@ -83,7 +83,7 @@
         <vladmihalcea.version>2.14.0</vladmihalcea.version>
         <webjars-locator.version>0.42</webjars-locator.version>
         <wiremock.version>2.32.0</wiremock.version>
-        <esapi.version>2.2.3.1</esapi.version>
+        <esapi.version>2.3.0.0</esapi.version>
         <jsoup.version>1.14.3</jsoup.version>
         <dependency-check-maven.version>6.5.0</dependency-check-maven.version>
         <spotbugs-maven-plugin.version>4.5.0.0</spotbugs-maven-plugin.version>
