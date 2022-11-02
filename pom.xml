@@ -72,22 +72,28 @@
         <select2.version>4.0.13</select2.version>
         <sonar-maven-plugin.version>3.9.1.2184</sonar-maven-plugin.version>
         <sortpom-maven-plugin.version>3.0.0</sortpom-maven-plugin.version>
-        <spring-boot.version>2.6.1</spring-boot.version>
-        <spring.cloud-version>2020.0.4</spring.cloud-version>
-        <spring-cloud-aws-version>2.3.2</spring-cloud-aws-version>
+        <spring-boot.version>2.7.5</spring-boot.version>
+
+<!--
+        <spring-security.version>5.7.5</spring-security.version>
+        <spring-security-test.version>5.7.5</spring-security-test.version>
+-->
+
+        <spring.cloud-version>2021.0.4</spring.cloud-version>
+        <spring-cloud-aws-version>2.4.2</spring-cloud-aws-version>
         <spring-data-envers.version>2.6.0</spring-data-envers.version>
         <springfox.version>3.0.0</springfox.version>
         <swagger-annotations.version>1.6.3</swagger-annotations.version>
         <testcontainer.version>1.16.2</testcontainer.version>
-        <thymeleaf.version>3.0.13.RELEASE</thymeleaf.version> <!-- see https://github.com/thymeleaf/thymeleaf-spring/issues/263#issuecomment-984568545 -->
-        <vladmihalcea.version>2.14.0</vladmihalcea.version>
+        <thymeleaf.version>3.0.15.RELEASE</thymeleaf.version> <!-- see https://github.com/thymeleaf/thymeleaf-spring/issues/263#issuecomment-984568545 -->
+        <vladmihalcea.version>2.20.0</vladmihalcea.version>
         <webjars-locator.version>0.42</webjars-locator.version>
         <wiremock.version>2.32.0</wiremock.version>
         <esapi.version>2.2.3.1</esapi.version>
         <jsoup.version>1.14.3</jsoup.version>
-        <dependency-check-maven.version>6.5.0</dependency-check-maven.version>
-        <spotbugs-maven-plugin.version>4.5.0.0</spotbugs-maven-plugin.version>
-        <findsecbugs-maven-plugin.version>1.11.0</findsecbugs-maven-plugin.version>
+        <dependency-check-maven.version>7.3.0</dependency-check-maven.version>
+        <spotbugs-maven-plugin.version>4.7.2.1</spotbugs-maven-plugin.version>
+        <findsecbugs-maven-plugin.version>1.12.0</findsecbugs-maven-plugin.version>
 
     </properties>
 
