@@ -72,7 +72,7 @@
         <sonar-maven-plugin.version>3.9.1.2184</sonar-maven-plugin.version>
         <sortpom-maven-plugin.version>3.0.0</sortpom-maven-plugin.version>
         <spring-boot.version>2.7.5</spring-boot.version>
-        <spring-security.version>5.7.5</spring-security.version>
+        <spring-security.version>5.7.10</spring-security.version>
         <spring.cloud-version>2021.0.4</spring.cloud-version>
         <spring-cloud-aws-version>2.4.2</spring-cloud-aws-version>
         <spring-data-envers.version>2.6.0</spring-data-envers.version>
